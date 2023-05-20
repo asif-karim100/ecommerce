@@ -10,7 +10,7 @@ const AvailableItem = ({products}) => {
            <img src={product.imageUrl} alt="no " className=""></img>
            <p> Price: {product.price}</p>
         </div>
-      )) }
+      ))}
   </div>;
 };
 
