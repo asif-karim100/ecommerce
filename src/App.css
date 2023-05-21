@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shopping-cart{
+  justify-content: space-between;
+  background-color: #61dafb;
+  padding: 20px 30px;
+}
+
+.product-item{
+padding: 20px;
+text-align: center;
+
+}
+
+.button{
+background-color: rgb(53, 166, 211);
+position: absolute;
+float: right;
+}
+
+.navBar{
+background-color:black;
+}

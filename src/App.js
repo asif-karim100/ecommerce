@@ -1,57 +1,38 @@
-// import logo from './logo.svg';
-// import './App.css';
-// import createUtilityClassName from 'react-bootstrap/esm/createUtilityClasses';
-import AvailableItem from './Component/AvailableItem';
-const productsArr = [
+import AvailableItem from './components/AvailableItem';
+import Cart from "./components/Cart/Cart";
+import NavBar,{CartButton} from "./components/Cart/NavBar";
+import React,{useState} from 'react';
+import { productsArr} from "./components/Cart/CartItem";
+import Header from './components/Layout/Header';
+import "./App.css";
+// import NavBar from './components/Cart/NavBar';
 
-  {
   
-  title: 'Colors',
-  
-  price: 100,
-  
-  imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-  
-  }.
-  
-  {
-  
-  title: 'Black and white Colors',
-  
-  price: 50,
-  
-  imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-  
-  },
-  
-  {
-  
-  title: 'Yellow and Black Colors',
-  
-  price: 70,
-  
-  imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-  
-  },
-  
-  {
-  
-  title: 'Blue Color',
-  
-  price: 100,
-  
-  imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
-  
-  }
-  
-  ]
+const App = (props) => {
+  const [showcart, setshowcart] = useState(false);
 
+  // {
+    // title: "Black and white Colors",
+  const showcartHandler = () => {
+    setshowcart(true);
+  };
+  const deleteHandler = () => {
+    setshowcart(false);
+  };
+  
 
-function App() {
+ 
+
+// function App() {
   return (
     <>
-        <h1>hello</h1>
-         <AvailableItem products={productsArr} />
+        {/* <h1 >hello</h1> */}
+        <NavBar></NavBar>
+        <Header></Header>
+        <CartButton onClick = {showcartHandler}/>
+         <AvailableItem products={productsArr}/>
+         {showcart && <Cart onClick={deleteHandler} />}
+        
        
     </>
   );
