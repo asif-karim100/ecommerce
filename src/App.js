@@ -38,7 +38,7 @@ const productsArr = [
 
   title: 'Blue Color',
 
-  price: 100,
+  price: 30,
 
   imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
 
