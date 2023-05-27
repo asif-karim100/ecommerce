@@ -1,20 +1,30 @@
-import React,{useState} from "react";
+import React,{useContext, useState} from "react";
+import "./App.css";
 import NavBar, {CartButton} from "./components/Cart/NavBar";
-import AvailableItem from "./components/AvailableItem";
-import Cart from "./components/Cart/Cart";
-import { productsArr} from "./components/Cart/CartItem";
+// import AvailableItem from "./components/AvailableItem";
+// import Cart from "./components/Cart/Cart";
+// import { productsArr} from "./components/Cart/CartItem";
 import Header from "./components/Layout/Header";
+import CartList from "./components/CartList";
+import ProductList from "./components/ProductList";
+import { Cart } from "./components/CartContext";
+
 
 const App = (props) => {
-  const [showcart, setshowcart] = useState(false);
+  const [showCart, setShowCart] = useState(false);
 
   
   
-  const showcartHandler = () => {
-    setshowcart(true);
-  };
-  const deleteHandler = () => {
-    setshowcart(false);
+  // const showcartHandler = () => {
+  //   setshowcart(true);
+  // };
+  // const deleteHandler = () => {
+  //   setshowcart(false);
+  // };
+  const {cart,addToCart} = useContext(Cart);
+
+  const handleShow = (value) =>{
+    setShowCart(value);
   };
 
 
@@ -22,12 +32,13 @@ const App = (props) => {
   return (
     <div>
       <h2>Let's get started!</h2>
-       <NavBar />
-      <Header />
+       <NavBar handleShow={handleShow} />
+      <Header count={cart.length} handleShow={handleShow}/>
 
-      <CartButton onClick = {showcartHandler}/>
-      <AvailableItem products={productsArr} />
-      {showcart && <Cart onClick={deleteHandler} />}
+      {showCart ? <CartList/>: <ProductList addToCart={addToCart}/>}
+      
+
+    
     </div>
   );
 }

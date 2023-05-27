@@ -6,7 +6,7 @@ export const CartButton = (props) => {
   return (
     <div>
       <Button
-        variant="dark"
+        variant="success"
        className={classes.button}
         style={{ float: "right" }}
         onClick={props.onClick}
