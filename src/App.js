@@ -8,7 +8,9 @@ import Header from "./components/Layout/Header";
 import CartList from "./components/CartList";
 import ProductList from "./components/ProductList";
 import { Cart } from "./components/CartContext";
-
+import About from "./components/pages/About";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const App = (props) => {
   const [showCart, setShowCart] = useState(false);
@@ -26,6 +28,10 @@ const App = (props) => {
   const handleShow = (value) =>{
     setShowCart(value);
   };
+  // const router =createBrowserRouter([
+  //   {path: '/about',element: <About></About>}
+
+  // ])
 
 
 
@@ -36,7 +42,12 @@ const App = (props) => {
       <Header count={cart.length} handleShow={handleShow}/>
 
       {showCart ? <CartList/>: <ProductList addToCart={addToCart}/>}
-      
+  
+       
+      <Routes>
+      <Route path="about" element={<About />} />
+    </Routes>
+    
 
     
     </div>
