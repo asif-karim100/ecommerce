@@ -1,41 +1,79 @@
-import AvailableItem from './components/AvailableItem';
-import Cart from "./components/Cart/Cart";
-import NavBar,{CartButton} from "./components/Cart/NavBar";
-import React,{useState} from 'react';
-import { productsArr} from "./components/Cart/CartItem";
-import Header from './components/Layout/Header';
+import {useState, useContext} from "react";
 import "./App.css";
-// import NavBar from './components/Cart/NavBar';
+import Header from "./components/LayOut/Header";
+// import ProductList from "./components/ProductList";
+import CartList from "./components/CartList";
+import { Cart } from "./components/CartContext";
+import { BrowserRouter,Route,Routes } from "react-router-dom";
+import Home from "./components/Pages/Home";
+import About from "./components/Pages/About";
+import Store from "./components/Pages/Store";
 
-  
-const App = (props) => {
-  const [showcart, setshowcart] = useState(false);
 
-  // {
-    // title: "Black and white Colors",
-  const showcartHandler = () => {
-    setshowcart(true);
-  };
-  const deleteHandler = () => {
-    setshowcart(false);
-  };
-  
 
+
+// import Cartpro from "./components/Cart/Cartpro";
+
+
+const App = ()  => {
+  const [showCart,setShowCart] = useState(false);
+
+  const { cart, addToCart} = useContext(Cart);
+
+
+
+
+const handleShow = (value) => {
+  setShowCart(value)
+};
+
+// {
+//   showCart ? 
+//   <CartList/> :
+
+// }
+// {
+//   showCart ? 
+//   <CartList/> :
+//   <ProductList addToCart={addToCart}/>
+
+// }
+
+//  <BrowserRouter>
+// <Routes>
+// <Route path="/home" element={<Home />} />
+// <Route path="store" element={showCart ? <CartList /> : <Store />} />
+// <Route path="about" element={<About />} />
+
+
+// </Routes>
+
+// </BrowserRouter>
+
+
+
+  return (
+    <div>
+   
+    
+<Header count={cart.length} handleShow={handleShow}/>
+
+      
+
+
+ <Routes>
+ <Route path="/home" element={<Home />} />
+ <Route path="store" element={showCart ? <CartList /> : <Store />} />
+ <Route path="about" element={<About />} />
  
 
-// function App() {
-  return (
-    <>
-        {/* <h1 >hello</h1> */}
-        <NavBar></NavBar>
-        <Header></Header>
-        <CartButton onClick = {showcartHandler}/>
-         <AvailableItem products={productsArr}/>
-         {showcart && <Cart onClick={deleteHandler} />}
-        
-       
-    </>
+
+ </Routes>
+
+    
+
+    </div>
   );
-};
+}
 
 export default App;

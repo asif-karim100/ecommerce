@@ -1,0 +1,27 @@
+.cart{
+    border-radius: 40px;
+   border-width: 6px;
+   border-color: yellowgreen;
+   /* background-color: black; */
+   /* color: red; */
+
+    
+    margin-top: 10px;
+
+}
+.image{
+    margin:20px;
+    margin-left: 200px;
+    width:50px
+}
+.clear{
+    margin-left: 400px;
+}
+
+.total{
+    margin-left: 400px;
+    
+}
+
+
+/* width={50} alt="no" style={{margin:"20px"}} */
