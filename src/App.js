@@ -1,78 +1,35 @@
-import {useState, useContext} from "react";
+import React, { useState } from "react";
+
+import MoviesList from "./components/MoviesList";
 import "./App.css";
-import Header from "./components/LayOut/Header";
-// import ProductList from "./components/ProductList";
-import CartList from "./components/CartList";
-import { Cart } from "./components/CartContext";
-import { BrowserRouter,Route,Routes } from "react-router-dom";
-import Home from "./components/Pages/Home";
-import About from "./components/Pages/About";
-import Store from "./components/Pages/Store";
 
-
-
-
-// import Cartpro from "./components/Cart/Cartpro";
-
-
-const App = ()  => {
-  const [showCart,setShowCart] = useState(false);
-
-  const { cart, addToCart} = useContext(Cart);
-
-
-
-
-const handleShow = (value) => {
-  setShowCart(value)
-};
-
-// {
-//   showCart ? 
-//   <CartList/> :
-
-// }
-// {
-//   showCart ? 
-//   <CartList/> :
-//   <ProductList addToCart={addToCart}/>
-
-// }
-
-//  <BrowserRouter>
-// <Routes>
-// <Route path="/home" element={<Home />} />
-// <Route path="store" element={showCart ? <CartList /> : <Store />} />
-// <Route path="about" element={<About />} />
-
-
-// </Routes>
-
-// </BrowserRouter>
-
-
+function App() {
+  const [movies, setmovies] = useState([]);
+  async function fetchMoviesHandler() {
+    const response = await fetch("https://swapi.dev/api/films/")
+      const data=await response.json();
+     
+        const transformedMovies = data.results.map((movieData) => {
+          return {
+            id: movieData.episode_id,
+            title: movieData.title,
+            openingText: movieData.opening_crawl,
+            releaseDate: movieData.release_date,
+          };
+        });
+        setmovies(transformedMovies);
+   
+  }
 
   return (
-    <div>
-   
-    
-<Header count={cart.length} handleShow={handleShow}/>
-
-      
-
-
- <Routes>
- <Route path="/home" element={<Home />} />
- <Route path="store" element={showCart ? <CartList /> : <Store />} />
- <Route path="about" element={<About />} />
- 
-
-
- </Routes>
-
-    
-
-    </div>
+    <React.Fragment>
+      <section>
+        <button onClick={fetchMoviesHandler}>Fetch Movies</button>
+      </section>
+      <section>
+        <MoviesList movies={movies} />
+      </section>
+    </React.Fragment>
   );
 }
 
