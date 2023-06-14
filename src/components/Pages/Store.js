@@ -1,19 +1,20 @@
-// import "../App.css";
 import Button from "react-bootstrap/Button";
 import React, { useContext } from "react";
-import {Cart} from "../CartContext";
-const ProductList = () => {
+import { Cart } from "../CartContext";
+import '../../App.css';
+const Store = () => {
   const {productsArr, addToCart} = useContext(Cart);
-
+  
   return (
     <div className="flex">
       {
-
-         productsArr.map((item, index) => {
+      
+      productsArr.map((item, index) => {
         return <div style={{width:'50%' }}>
           <div className="product-item">   
           <h3>{item.title}</h3>
           <img src={item.imageUrl} width="50%"/>
+          {/* <img src={item.imageUrl} width="50%"/> */}
           <p>Price: ${item.price}</p>
           <Button className="button"
           onClick={() => addToCart(item)}
@@ -21,10 +22,9 @@ const ProductList = () => {
           </div>
          </div>;
       })
-
+      
       }
     </div>
   );
 };
-
-export default ProductList;
+export default Store;

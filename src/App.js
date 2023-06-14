@@ -1,93 +1,78 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import {useState, useContext} from "react";
+import "./App.css";
+import Header from "./components/LayOut/Header";
+// import ProductList from "./components/ProductList";
+import CartList from "./components/CartList";
+import { Cart } from "./components/CartContext";
+import { BrowserRouter,Route,Routes } from "react-router-dom";
+import Home from "./components/Pages/Home";
+import About from "./components/Pages/About";
+import Store from "./components/Pages/Store";
+import ContactUs from "./components/Pages/ContactUs";
 
-import MoviesList from './components/MoviesList';
-import AddMovie from './components/AddMovie';
-import './App.css';
 
 
-function App() {
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+// import Cartpro from "./components/Cart/Cartpro";
+
+
+const App = ()  => {
+  const [showCart,setShowCart] = useState(false);
+
+  const { cart, addToCart} = useContext(Cart);
 
 
 
-  const fetchMoviesHandler = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await fetch('https://react-http-b891d-default-rtdb.firebaseio.com/movies.json');
-      if (!response.ok) {
-        throw new Error('Something went wrong!');
-      }
 
-      const data = await response.json();
+const handleShow = (value) => {
+  setShowCart(value)
+};
 
-      const loadedmovies =[];
-      for(const key in data){
-        loadedmovies.push({
-          id: key,
-          title: data[key].title,
-          openingText: data[key].openingText,
-          releaseDate: data[key].releaseDate
-        })
-      }
+// {
+//   showCart ? 
+//   <CartList/> :
 
-     
-      setMovies(loadedmovies);
-    } catch (error) {
-      setError(error.message);
-    }
-    setIsLoading(false);
-  }, []);
+// }
+// {
+//   showCart ? 
+//   <CartList/> :
+//   <ProductList addToCart={addToCart}/>
 
-  useEffect(() => {
-    fetchMoviesHandler();
-  }, [fetchMoviesHandler]);
+// }
 
-  
-  async function addMovieHandler(movie) {
-    const response =await fetch('https://react-http-b891d-default-rtdb.firebaseio.com/movies.json',{
-      method: 'POST',
-      body: JSON.stringify(movie),
-      headers:{
-        'Content-Type': 'application/json'
-      }
-    })
-    const data = await response.json();
-    console.log(data);
-  }
+//  <BrowserRouter>
+// <Routes>
+// <Route path="/home" element={<Home />} />
+// <Route path="store" element={showCart ? <CartList /> : <Store />} />
+// <Route path="about" element={<About />} />
 
-  let content = <p>Found no movies.</p>;
 
-  if (movies.length > 0) {
-    content = <MoviesList movies={movies} />;
-  }
+// </Routes>
 
-  if (error) {
-    content = <p>{error}</p>;
-  }
+// </BrowserRouter>
 
-  if (isLoading) {
-    content = <p>Loading...</p>;
-  }
-  
-
- 
 
   return (
-    <React.Fragment>
-      <section>
-        <AddMovie onAddMovie={addMovieHandler} />
-      </section>
-      <section>
-        <button onClick={fetchMoviesHandler}>Fetch Movies</button>
-      </section>
-      <section>
-      {content}</section>
+    <div>
+   
     
+<Header count={cart.length} handleShow={handleShow}/>
+
+      
+
+
+ <Routes>
+ <Route path="/home" element={<Home />} />
+ <Route path="store" element={showCart ? <CartList /> : <Store />} />
+ <Route path="about" element={<About />} />
+ <Route path="contact" element={<ContactUs></ContactUs>}></Route>
+ 
+
+
+ </Routes>
+
     
-    </React.Fragment>
+
+    </div>
   );
 }
 

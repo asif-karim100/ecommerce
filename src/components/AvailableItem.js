@@ -9,7 +9,9 @@ const AvailableItem = ({products})=>{
     return(
         <div>
         {products.map(product =>(
-            <div key={product.title} style={{
+            <div
+            id={product.id}
+            key={product.title} style={{
                 marginRight:"10px",
                 padding:"10px",
                 float:'right'

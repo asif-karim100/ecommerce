@@ -1,26 +1,23 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect,useState, useContext } from "react";
 import { Cart } from "./CartContext";
 import "../App.css";
 import { Card } from "react-bootstrap";
 import classes from"./CartList.module.css";
+// import CartContext from "./CartContext";
+
 
 
 
 const CartList = (item) => {
   const [CART, setCART] = useState([]);
 
-  const {cart} = useContext(Cart);
+  const {cart,clearcart} = useContext(Cart);
 
   useEffect(() => {
     setCART(cart);
   }, [cart]);
-
-  const clearcart = (itemindex) =>{
-    {setCART(cart.filter(index =>index.id !== itemindex.id))}
-
-
-
-  }
+ 
+  
   
 
  
@@ -29,8 +26,8 @@ const CartList = (item) => {
     <div style={{float:"right"}}>
       {CART?.map((item, itemindex) => {
         return (
-          <div>
-         
+          <div key={item.id}>
+             
             <img src={item.imageUrl} className={classes["image"]} />
             <span>{item.title}</span>
             <button 
@@ -61,8 +58,13 @@ const CartList = (item) => {
             >
               +
             </button>
-            <span> Price: ${item.price * item.quantity}</span>
+            <span> Price: ${item.price * item.quantity}
+
+            </span>
+            
+
           </div>
+       
         );
       })}
       <p>
@@ -72,7 +74,22 @@ const CartList = (item) => {
           0
         )}
       </p>
-      <button className={classes["clear"]} onClick={clearcart}>Hide Cart</button>
+  
+      <button className={classes["clear"]} onClick={clearcart}>Clear Cart</button>
+
+
+   
+      
+      
+
+
+
+      
+     
+
+
+
+      
 
      
      
@@ -84,7 +101,7 @@ const CartList = (item) => {
 
 export default CartList;
 
-
+// <button className={classes["clear"]} onClick={clearcart}>Hide Cart</button>
 
 
 

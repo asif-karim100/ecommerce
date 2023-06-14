@@ -1,6 +1,6 @@
 export const CartitemList = [
     {
-      id: 1,
+      id: "1",
       title: "Colors",
   
       price: 100,
@@ -11,7 +11,7 @@ export const CartitemList = [
     },
   
     {
-      id: 2,
+      id: "2",
   
       title: "Black and white Colors",
   
@@ -23,7 +23,7 @@ export const CartitemList = [
     },
   
     {
-      id: 3,
+      id: "3",
   
       title: "Yellow and Black Colors",
   
@@ -34,6 +34,7 @@ export const CartitemList = [
       quantity: 1,
     },
     {
+      id: "4",
         title: "Blue Color",
     
         price: 100,
@@ -44,7 +45,9 @@ export const CartitemList = [
   ];
 
   export const productsArr = [
+
     {
+      id: 1,
       title: "Colors",
   
       price: 100,
@@ -53,6 +56,7 @@ export const CartitemList = [
     },
   
     {
+      id: 2,
       title: "Black and white Colors",
   
       price: 50,
@@ -61,6 +65,7 @@ export const CartitemList = [
     },
   
     {
+      id: "3",
       title: "Yellow and Black Colors",
   
       price: 70,
@@ -69,6 +74,7 @@ export const CartitemList = [
     },
   
     {
+      id: "4",
       title: "Blue Color",
   
       price: 100,
@@ -76,3 +82,9 @@ export const CartitemList = [
       imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
     },
   ];
+
+
+
+
+  ///////////////
+ 
