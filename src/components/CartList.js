@@ -18,7 +18,7 @@ const CartList = (item) => {
   }, [cart]);
  
   
-  
+ 
 
  
   return (
@@ -28,7 +28,7 @@ const CartList = (item) => {
         return (
           <div key={item.id}>
              
-            <img src={item.imageUrl} className={classes["image"]} />
+            <img src={item.imageUrl} alt="im" className={classes["image"]} />
             <span>{item.title}</span>
             <button 
               onClick={() => {

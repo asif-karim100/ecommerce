@@ -1,15 +1,15 @@
-import {useState, useContext} from "react";
+import {useState} from "react";
 import "./App.css";
 import Header from "./components/LayOut/Header";
 // import ProductList from "./components/ProductList";
 import CartList from "./components/CartList";
-import { Cart } from "./components/CartContext";
-import { BrowserRouter,Route,Routes } from "react-router-dom";
+// import { Cart } from "./components/CartContext";
+import { Route,Routes } from "react-router-dom";
 import Home from "./components/Pages/Home";
 import About from "./components/Pages/About";
 import Store from "./components/Pages/Store";
 import ContactUs from "./components/Pages/ContactUs";
-
+import ProductDetails from "./components/Pages/productDetails";
 
 
 // import Cartpro from "./components/Cart/Cartpro";
@@ -18,7 +18,7 @@ import ContactUs from "./components/Pages/ContactUs";
 const App = ()  => {
   const [showCart,setShowCart] = useState(false);
 
-  const { cart, addToCart} = useContext(Cart);
+  // const { cart, addToCart} = useContext(Cart);
 
 
 
@@ -55,7 +55,7 @@ const handleShow = (value) => {
     <div>
    
     
-<Header count={cart.length} handleShow={handleShow}/>
+<Header  handleShow={handleShow}/>
 
       
 
@@ -65,7 +65,7 @@ const handleShow = (value) => {
  <Route path="store" element={showCart ? <CartList /> : <Store />} />
  <Route path="about" element={<About />} />
  <Route path="contact" element={<ContactUs></ContactUs>}></Route>
- 
+ <Route path="/product/:id" element={<ProductDetails/>} /> 
 
 
  </Routes>
