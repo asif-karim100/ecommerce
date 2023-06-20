@@ -1,12 +1,16 @@
 
 
-import { useState, useRef } from 'react';
+import { useState, useRef,useContext } from 'react';
 
 import classes from './AuthForm.module.css';
+import AuthContext from '../../store/auth-context';
 
 const AuthForm = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+
+  const authCtx  = useContext(AuthContext);
+
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,10 +25,15 @@ const AuthForm = () => {
       const enteredPassword = passwordInputRef.current.value;
 
       setIsLoading(true);
+
+      let url;
       if (isLogin) {
+        url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD89dwf08JS2rjWi2x48VZX5jptSOHnHIk'
 
      } else {
-      fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD89dwf08JS2rjWi2x48VZX5jptSOHnHIk',
+      url='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD89dwf08JS2rjWi2x48VZX5jptSOHnHIk'
+    }
+    fetch(url,
         {
           method:'POST',
           body:JSON.stringify({
@@ -39,7 +48,7 @@ const AuthForm = () => {
       ).then(res => {
         setIsLoading(false);
         if (res.ok) {
-          //....
+          return res.json();
         } else {
          return  res.json().then(data => {
             // show the error
@@ -47,13 +56,19 @@ const AuthForm = () => {
             if(data && data.error && data.error.message){
               errorMessage = data.error.message;
              }
-             alert(errorMessage);
+             
             // console.log(data);
-          })
+            throw new Error(errorMessage);
+          });
         }
       })
-
-    }
+      .then((data) =>{
+        // console.log(data);
+        authCtx.login(data.idToken);
+      })
+      .catch((err) =>{
+        alert(err.message);
+      });
   }
 
   return (
