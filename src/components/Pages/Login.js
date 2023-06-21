@@ -8,8 +8,13 @@ import AuthContext from '../../store/AuthContext';
 
 
 function LogIn() {
+
+
     const authCtx = useContext(AuthContext)
     const history = useNavigate() 
+    const logit =() =>{
+        history('/store')
+    }
     const emailInputref = useRef()
     const passwordInputref = useRef()
 
@@ -76,7 +81,7 @@ function LogIn() {
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-      <Button variant="success" type="submit">
+      <Button variant="success" type="submit" onClick={() =>logit()}>
         Log In
       </Button>
     </Form>
