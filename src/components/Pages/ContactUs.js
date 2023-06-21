@@ -12,7 +12,7 @@ function ContactUs() {
       name:nameRef.current.value,
       email:emailRef.current.value,
       mobilenumber:numberRef.current.value
-
+ 
     }
     console.log(data)
 

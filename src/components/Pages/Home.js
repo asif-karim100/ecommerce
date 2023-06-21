@@ -6,7 +6,7 @@ import Table from 'react-bootstrap/Table';
 const Home = () => {
   return (
     <div>
-      <h1>Home component</h1>
+      <h1 style={{textAlign:'center'}}><u>Home component</u></h1>
          <h1 style={{fontFamily:'Comic Sans MS',textAlign:'center'}}>TOURS</h1>
      <div className="a">
         <Table striped bordered hover>

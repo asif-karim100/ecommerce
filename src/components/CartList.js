@@ -2,7 +2,7 @@ import React, { useEffect,useState, useContext } from "react";
 import { Cart } from "./CartContext";
 import "../App.css";
 import { Card } from "react-bootstrap";
-import classes from"./CartList.module.css";
+import classes from "./CartList.module.css";
 // import CartContext from "./CartContext";
 
 

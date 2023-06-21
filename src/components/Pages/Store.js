@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 import { Cart } from "../CartContext";
 import '../../App.css';
 
+
 const Store = () => {
   const {productsArr, addToCart} = useContext(Cart);
   
   return (
+    <>
+    
+    
+    
     <div className="flex">
       {
       
@@ -31,6 +36,7 @@ const Store = () => {
       
       }
     </div>
+    </>
   );
 };
 export default Store;

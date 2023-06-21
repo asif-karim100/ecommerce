@@ -1,0 +1,15 @@
+.para{
+    background-color:aqua;
+    width: 800px;
+    margin-left: 200px;
+    
+    
+}
+
+.about{
+    /* background-color: aqua; */
+    width: 300px;
+    margin-left: 400px;
+    text-decoration: dotted;
+    text-underline-position: below;
+}

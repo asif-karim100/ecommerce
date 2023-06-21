@@ -1,15 +1,21 @@
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-
-import './index.css';
+import ReactDOM from "react-dom/client";
+import "../node_modules/react-bootstrap/dist/react-bootstrap";
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
+// import './index.css';
+import CartContext from './components/CartContext';
 import App from './App';
-import { AuthContextProvider } from './store/auth-context';
+import { BrowserRouter } from "react-router-dom";
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 root.render(
-  <AuthContextProvider>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-  </AuthContextProvider>
+<BrowserRouter>
+    <CartContext>
+        <App />
+    </CartContext>
+    </BrowserRouter>
+   
+
 );
