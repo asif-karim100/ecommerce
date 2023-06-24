@@ -4,8 +4,12 @@ import { Button } from "react-bootstrap";
 import Table from 'react-bootstrap/Table';
 
 const Home = () => {
+  const buy =()=>{
+    alert("Wow HAppy See yOU Again")
+  }
   return (
     <div>
+    
       <h1 style={{textAlign:'center'}}><u>Home component</u></h1>
          <h1 style={{fontFamily:'Comic Sans MS',textAlign:'center'}}>TOURS</h1>
      <div className="a">
@@ -25,7 +29,7 @@ const Home = () => {
           <td>JUL16</td>
           <td>DETROIT, MI</td>
           <td>DTE ENERGY MUSIC THEATRE</td>
-          <td><Button variant="info">BUY TICKETSs</Button></td>
+          <td><Button variant="info"  onClick={() =>buy()}>BUY TICKETSs</Button></td>
         </tr>
         <tr>
           <td>2</td>
@@ -33,7 +37,7 @@ const Home = () => {
           <td>TORONTO,ON</td>
           <td>
 BUDWEISER STAGE</td>
-<td><Button variant="info">BUY TICKETS</Button></td>
+<td><Button variant="info" onClick={() =>buy()}>BUY TICKETS</Button></td>
 
         </tr>
         <tr>
@@ -41,7 +45,7 @@ BUDWEISER STAGE</td>
           <td>JUL 22</td>
           <td>BRISTOW, VA</td>
           <td>JIGGY LUBE LIVE</td>
-          <td><Button variant="info">BUY TICKETS</Button></td>
+          <td><Button variant="info"  onClick={() =>buy()}>BUY TICKETS</Button></td>
 
         </tr>
         <tr>
@@ -49,7 +53,7 @@ BUDWEISER STAGE</td>
           <td>JUL 22</td>
           <td>BRISTOW, VA</td>
           <td>JIGGY LUBE LIVE</td>
-          <td><Button variant="info">BUY TICKETS</Button></td>
+          <td><Button variant="info"  onClick={() =>buy()}>BUY TICKETS</Button></td>
 
         </tr>
         <tr>
@@ -58,7 +62,7 @@ BUDWEISER STAGE</td>
           <td>LAS VEGAS, NV</td>
           <td>
         T-MOBILE ARENA</td>
-        <td><Button variant="info">BUY TICKETS</Button></td>
+        <td><Button variant="info"  onClick={() =>buy()}>BUY TICKETS</Button></td>
 
         </tr>
         <tr>
@@ -66,7 +70,7 @@ BUDWEISER STAGE</td>
           <td>AUG 7</td>
           <td>BRISTOW, VA</td>
           <td>JIGGY LUBE LIVE</td>
-          <td><Button variant="info">BUY TICKETS</Button></td>
+          <td><Button variant="info"  onClick={() =>buy()}>BUY TICKETS</Button></td>
 
         </tr>
       </tbody>

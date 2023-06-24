@@ -1,6 +1,7 @@
 import { useRef } from 'react';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import classes from './ContactUs.module.css'
 function ContactUs() {
   const nameRef=useRef('')
   const emailRef=useRef('')
@@ -35,6 +36,7 @@ function ContactUs() {
 
   return (
     <div style={{margin:'5%',paddingBottom:'10%'}}>
+    <section className={classes.auth}>
        <Form onSubmit={submitHandler}>
        <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Name</Form.Label>
@@ -44,7 +46,7 @@ function ContactUs() {
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" ref={emailRef} />
         <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
+          
         </Form.Text>
       </Form.Group>
 
@@ -52,13 +54,17 @@ function ContactUs() {
         <Form.Label>Mobile Number</Form.Label>
         <Form.Control type="number" placeholder="mobile number" ref={numberRef} />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+      {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-      <Button variant="primary" type="submit">
+      </Form.Group> */}
+      {/* <Button variant="primary" type="submit" className={classes.actions}>
         Submit
-      </Button>
+      </Button> */}
+      <div>
+      <button className={classes.action}>submit</button>
+     </div>
     </Form>
+    </section>
 
     </div>
   )

@@ -9,11 +9,12 @@ import Store from "./components/Pages/Store";
 import ContactUs from "./components/Pages/ContactUs";
 import ProductDetails from "./components/Pages/productDetails";
 import LogIn from "./components/Pages/Login";
+import Mainpage from "./components/Pages/Mainpage";
 
 // import Cartpro from "./components/Cart/Cartpro";
 
 
-const App = ()  => {
+const App = (props)  => {
   const [showCart,setShowCart] = useState(false);
 
   // const { cart, addToCart} = useContext(Cart);
@@ -52,22 +53,24 @@ const handleShow = (value) => {
   return (
     <div>
    
-    
-<Header  handleShow={handleShow}/>
-
-      
+     
+<Header  handleShow={handleShow} />
 
 
  <Routes>
+ <Route path='/main' element={<Mainpage />} />
+
  <Route path="/home" element={<Home />} />
- <Route path="store" element={showCart ? <CartList /> : <Store />} />
+ <Route path="store" element={showCart  ? <CartList /> : <Store />}    handleShow={handleShow}/>
  <Route path="about" element={<About />} />
  <Route path="contact" element={<ContactUs></ContactUs>}></Route>
- +  <Route path="login" element={<LogIn/>}/>
+ <Route path="login" element={<LogIn/>}/>
  <Route path="/product/:id" element={<ProductDetails/>} /> 
 
 
  </Routes>
+
+ 
 
     
 

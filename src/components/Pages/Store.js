@@ -5,8 +5,10 @@ import { Cart } from "../CartContext";
 import '../../App.css';
 
 
-const Store = () => {
+const Store = (props) => {
   const {productsArr, addToCart} = useContext(Cart);
+ 
+  
   
   return (
     <>
@@ -36,6 +38,10 @@ const Store = () => {
       
       }
     </div>
+    {/* <Button variant="success" onClick={() => props.handleShow(true)}>
+        Cart
+        <sup>{props.length}</sup>
+      </Button> */}
     </>
   );
 };

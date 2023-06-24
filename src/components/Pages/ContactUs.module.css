@@ -1,0 +1,32 @@
+.auth {
+    margin: 3rem auto;
+    width: 95%;
+    max-width: 50rem;
+    border-radius: 20px;
+   
+    
+    
+    /* background-color: #38015c; */
+    background-color: black;
+    /* box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); */
+    padding: 1rem;
+    text-align: center;
+    color:white
+  }
+   /* .action button {
+    cursor: pointer;
+    font: inherit;
+    color: white;
+     background-color: #9f5ccc;
+    background-color: black;
+    border: 1px solid #9f5ccc;
+    border-radius: 4px;
+    padding: 0.5rem 2.5rem;
+  }
+   action button:hover  {
+    /* background-color: #873abb; */
+     /* background-color: rgb(255, 0, 38); 
+    border-color: black; 
+    border-color: yellowgreen;
+   }   */
+

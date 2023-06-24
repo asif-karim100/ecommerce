@@ -8,17 +8,17 @@ const AvailableItem = ({products})=>{
 
     return(
         <div>
-        {products.map(product =>(
+        {products.map(item =>(
             <div
-            id={product.id}
-            key={product.title} style={{
+            key={item.id}
+            title={item.title} style={{
                 marginRight:"10px",
                 padding:"10px",
                 float:'right'
             }}>
-            <h3>{product.title}</h3>
-            <img src = {product.imageUrl}></img>
-            <p>price:{product.price}</p>
+            <h3>{item.title}</h3>
+            <img src = {item.imageUrl} alt='in'></img>
+            <p>price:{item.price}</p>
             <Button>Add to Cart</Button>
             
             

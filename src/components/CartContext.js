@@ -7,35 +7,31 @@ import {productsArr} from './CartItem';
 
 const CartContext = ({children}) => {
     const [cart,setCart] = useState([]);
+    const [warning,setWarning] =useState(false);
 
 
   const addToCart = (data) => {
+    //////if item is already present then prentitem not addtocart
+    let isPresent = false;
+    cart.forEach((product)=>{
+      if(data.id === product.id)
+      isPresent = true;
+    })
+    if(isPresent){
+      setWarning(true);
+     
+      return;
+    }
     setCart([...cart, {...data, quantity : 1}])
 };
 
-const clearcart = (product) =>{
-    setCart(cart.filter((item) =>item.id ===product.id))
-}
-// const clearcart =(data) =>{
-//     setCart(cart.filter(productItem =>productItem.id !== data.id))
 
-// }
-// const handleremovepro =(data) => {
-//     const productExist =cart.find((item)=>item.id ===data.id);
-//     if(productExist.quantity ===1){
-//          setCart(cart.filter((item) =>item.id !==data.id));
-
-//     }else{
-//           setCart(cart.map((item)=> item.id === data.id ? {...productExist,quantity:productExist.quantity -1}:item))
-//     }
-
-// }
 
 
 
   return (
 
-    <Cart.Provider value={{cart,setCart,productsArr, addToCart,clearcart}}>
+    <Cart.Provider value={{cart,setCart,productsArr, addToCart}}>
       {children}
       
 

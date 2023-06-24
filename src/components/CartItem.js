@@ -90,7 +90,7 @@
 
 export const productsArr = [
   {
-    id: "p1",
+    id: "1",
 
     title: "Colors",
 
@@ -110,7 +110,7 @@ export const productsArr = [
   },
 
   {
-    id: "p2",
+    id: "2",
 
     title: "Black and white Colors",
 
@@ -130,7 +130,7 @@ export const productsArr = [
   },
 
   {
-    id: "p3",
+    id: "3",
 
     title: "Yellow and Black Colors",
 
@@ -150,7 +150,7 @@ export const productsArr = [
   },
 
   {
-    id: "p4",
+    id: "4",
 
     title: "Blue Color",
 

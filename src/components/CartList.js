@@ -3,30 +3,51 @@ import { Cart } from "./CartContext";
 import "../App.css";
 import { Card } from "react-bootstrap";
 import classes from "./CartList.module.css";
+import { useNavigate } from "react-router-dom";
 // import CartContext from "./CartContext";
 
 
 
 
-const CartList = (item) => {
+
+const CartList = ({item}) => {
   const [CART, setCART] = useState([]);
 
-  const {cart,clearcart} = useContext(Cart);
+  const {cart,setCart} = useContext(Cart);
+
+  const deleteitem = (id) =>{
+    
+    const newlist= cart.filter((item) =>item.id !== id);
+    setCart(newlist)
+          
+  } 
+  const clearcart = (data) =>{
+    
+    const newlist= cart.filter((item) =>item.id === data);
+    setCart(newlist)
+          
+  } 
+  
 
   useEffect(() => {
     setCART(cart);
   }, [cart]);
  
   
- 
-
+  const histo = useNavigate() ;
+  const back = () => {
+    // alert("jhy")
+      histo('/home');
+  }
  
   return (
+    <>
     <Card  className={classes["cart"]}>
     <div style={{float:"right"}}>
-      {CART?.map((item, itemindex) => {
+      {CART.map((item, itemindex) => {
         return (
-          <div key={item.id}>
+          
+          <div id={item.id}>
              
             <img src={item.imageUrl} alt="im" className={classes["image"]} />
             <span>{item.title}</span>
@@ -36,7 +57,7 @@ const CartList = (item) => {
                   return itemindex === index
                     ? {
                         ...item,
-                        quantity: item.quantity > 0 ? item.quantity - 1 : 0,
+                        quantity: item.quantity > 0 ? item.quantity  -1 : 0,
                       }
                     : item;
                 });
@@ -61,10 +82,11 @@ const CartList = (item) => {
             <span> Price: ${item.price * item.quantity}
 
             </span>
-            
+            <button onClick={() => deleteitem(item.id)}>deletebutton</button>
 
           </div>
-       
+          
+      
         );
       })}
       <p>
@@ -76,9 +98,7 @@ const CartList = (item) => {
       </p>
   
       <button className={classes["clear"]} onClick={clearcart}>Clear Cart</button>
-
-
-   
+     
       
       
 
@@ -96,13 +116,20 @@ const CartList = (item) => {
 
     </div>
     </Card>
+    <section>
+      <button  onClick={() => back()}>Back to Home</button>
+
+      </section>
+      </>
   );
 };
 
 export default CartList;
 
-// <button className={classes["clear"]} onClick={clearcart}>Hide Cart</button>
 
+
+////////////////////////////////////////////////
+//////////////
 
 
 
